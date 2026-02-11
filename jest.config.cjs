@@ -1,5 +1,6 @@
 /** @type {import('jest').Config} */
-export default {
+module.exports = {
+  preset: "ts-jest/presets/default-esm",
   testEnvironment: "jsdom",
   roots: ["<rootDir>/src"],
 
@@ -7,7 +8,7 @@ export default {
   extensionsToTreatAsEsm: [".ts", ".tsx"],
 
   // Полифиллы для Node.js globals (TextEncoder/TextDecoder для MSW)
-  setupFiles: ["<rootDir>/jest.setup.js"],
+  setupFiles: ["<rootDir>/jest.setup.cjs"],
 
   moduleNameMapper: {
     // Алиасы FSD
@@ -17,6 +18,9 @@ export default {
     "^@features/(.*)$": "<rootDir>/src/features/$1",
     "^@entities/(.*)$": "<rootDir>/src/entities/$1",
     "^@shared/(.*)$": "<rootDir>/src/shared/$1",
+    // MSW
+    "^msw/node$": "<rootDir>/__mocks__/msw.cjs",
+    "^msw$": "<rootDir>/__mocks__/msw.cjs",
     // Стили
     "\\.(css|scss|sass)$": "identity-obj-proxy",
     // Статические файлы
@@ -36,7 +40,9 @@ export default {
     ],
   },
 
-  transformIgnorePatterns: [],
+  transformIgnorePatterns: [
+    "node_modules/(?!(react-router-dom|react-router|@remix-run)/)",
+  ],
 
   moduleDirectories: ["node_modules", "<rootDir>/src"],
 
