@@ -30,8 +30,6 @@ export const useAuth = (): AuthContextType => {
     const storedToken = localStorage.getItem("authToken");
     const storedUser = localStorage.getItem("authUser");
 
-    console.log(storedToken, storedUser);
-
     if (storedToken && storedUser) {
       setToken(storedToken);
       setUser(JSON.parse(storedUser));
