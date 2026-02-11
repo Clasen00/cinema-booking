@@ -1,4 +1,4 @@
-import type { Booking, BookingGroup } from "@/entities/booking/model/types";
+import type { Booking, BookingGroup } from "@/entities/booking";
 import { calculateRemainingTime } from "./calculateRemainingTime";
 
 export const groupBookingsByStatus = (

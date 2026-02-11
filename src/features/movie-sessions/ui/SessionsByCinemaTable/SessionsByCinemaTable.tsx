@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { formatDateTime } from "@/shared/lib/utils/date";
 import { groupSessionsByCinema } from "../../lib/utils/groupSessionsByCinema";
 import styles from "./SessionsByCinemaTable.module.scss";
-import type { MovieSession } from "@/entities/cinema/model/types";
+import type { MovieSession } from "@/entities/cinema";
 
 interface SessionsByCinemaTableProps {
   sessions: MovieSession[];

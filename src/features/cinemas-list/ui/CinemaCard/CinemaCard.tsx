@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styles from "./CinemaCard.module.scss";
-import type { Cinema } from "@/types";
+import type { Cinema } from "@/entities/cinema";
 
 interface CinemaCardProps {
   cinema: Cinema;

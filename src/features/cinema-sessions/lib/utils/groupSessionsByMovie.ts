@@ -1,4 +1,4 @@
-import type { MovieSession } from "@/types";
+import type { MovieSession } from "@/entities/session";
 
 export const groupSessionsByMovie = (
   sessions: MovieSession[],

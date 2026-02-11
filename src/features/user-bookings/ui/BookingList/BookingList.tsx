@@ -2,7 +2,7 @@ import React from "react";
 import { BookingCard } from "../BookingCard/BookingCard";
 import { EmptyState } from "../EmptyState/EmptyState";
 import styles from "./BookingList.module.scss";
-import type { Booking } from "@/entities/booking/model/types";
+import type { Booking } from "@/entities/booking";
 
 interface BookingListProps {
   bookings: Booking[];

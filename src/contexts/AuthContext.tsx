@@ -1,10 +1,6 @@
-import React, {
-  createContext,
-  useState,
-  useContext,
-  ReactNode,
-  useEffect,
-} from "react";
+import React, { createContext, useState } from "react";
+
+import type { ReactNode } from "react";
 
 interface User {
   id: string;
@@ -15,6 +11,8 @@ interface AuthContextType {
   user: User | null;
   isAuthenticated: boolean;
   isLoading: boolean;
+  setUser: (user: User | null) => void;
+  setIsLoading: (isLoading: boolean) => void;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -39,6 +37,8 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         user,
         isAuthenticated,
         isLoading,
+        setUser,
+        setIsLoading,
       }}
     >
       {children}

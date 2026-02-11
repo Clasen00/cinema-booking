@@ -1,6 +1,6 @@
-import type { MovieSession } from "@/entities/session/model/types";
-import apiClient from "../../../shared/api/apiClient";
-import type { Movie } from "../../../types";
+import type { MovieSession } from "@/entities/cinema";
+import apiClient from "@/shared/api/apiClient";
+import type { Movie } from "@/types";
 
 const movieApi = {
   /**

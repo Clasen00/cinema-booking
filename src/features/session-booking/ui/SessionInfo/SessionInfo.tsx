@@ -1,7 +1,7 @@
 import React from "react";
-import type { MovieSessionDetails } from "@/entities/session/model/types";
 import styles from "./SessionInfo.module.scss";
 import { formatDate, formatTime } from "@/shared/lib/utils/date";
+import type { MovieSessionDetails } from "@/entities/session";
 
 interface SessionInfoProps {
   session: MovieSessionDetails;

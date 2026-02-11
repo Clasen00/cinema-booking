@@ -1,5 +1,5 @@
-import movieApi from "@/entities/movie/api/movieApi";
-import type { MovieSession } from "@/entities/session/model/types";
+import { movieApi } from "@/entities/movie";
+import { type MovieSession } from "@/entities/session";
 import type { Movie } from "@/types";
 import { useState, useEffect, useCallback } from "react";
 

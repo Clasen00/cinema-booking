@@ -1,4 +1,4 @@
-import { useAuth } from "@/features/auth";
+import { useAuth } from "@/entities/user";
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./Header.module.scss";

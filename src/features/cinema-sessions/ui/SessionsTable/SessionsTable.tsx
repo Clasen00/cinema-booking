@@ -1,10 +1,10 @@
 import React, { useState, useMemo } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/shared/ui";
-import type { MovieSession } from "@/entities/session/model/types";
-import styles from "./SessionsTable.module.scss";
 import { formatDateTime } from "@/shared/lib/utils/date";
 import { groupSessionsByMovie } from "../../lib/utils";
+import type { MovieSession } from "@/entities/session";
+import styles from "./SessionsTable.module.scss";
 
 interface SessionsTableProps {
   sessions: MovieSession[];

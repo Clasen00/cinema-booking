@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
-import { useAuth } from "./useAuth";
+import { useAuth } from "@/entities/user/lib/hooks/useAuth";
 import {
   registerSchema,
   type RegisterFormData,

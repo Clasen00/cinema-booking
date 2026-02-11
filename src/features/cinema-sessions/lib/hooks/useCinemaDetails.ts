@@ -1,5 +1,5 @@
-import cinemaApi from "@/entities/cinema/api/cinemaApi";
-import type { Cinema, MovieSession } from "@/types";
+import { cinemaApi } from "@/entities/cinema";
+import type { Cinema, MovieSession } from "@/entities/cinema";
 import { useState, useEffect, useCallback } from "react";
 
 export const useCinemaDetails = (id?: string) => {
@@ -24,7 +24,7 @@ export const useCinemaDetails = (id?: string) => {
       setError(
         "Не удалось загрузить информацию о кинотеатре. Попробуйте позже.",
       );
-      console.error("Error fetching cinema details:", err);
+      console.error("Ошибка при загрузке кинотеатра:", err);
     } finally {
       setLoading(false);
     }

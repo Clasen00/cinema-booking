@@ -1,9 +1,9 @@
 import { useState, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "@/features/auth/lib/hooks/useAuth";
+import { useAuth } from "@/entities/user";
 import { useSeatSelection } from "./useSeatSelection";
-import sessionsApi from "@/entities/session/api/sessionsApi";
-import type { MovieSessionDetails } from "@/entities/session/model/types";
+import type { MovieSessionDetails } from "@/entities/session";
+import { sessionApi } from "@/entities/session";
 
 export const useSessionBooking = (sessionId?: string) => {
   const navigate = useNavigate();
@@ -25,7 +25,7 @@ export const useSessionBooking = (sessionId?: string) => {
 
     try {
       setLoading(true);
-      const data = await sessionsApi.getSessionById(sessionId);
+      const data = await sessionApi.getSessionById(sessionId);
       setSession(data);
       setError(null);
     } catch (err) {
@@ -69,7 +69,7 @@ export const useSessionBooking = (sessionId?: string) => {
 
     try {
       setBooking(true);
-      await sessionsApi.bookSeats(sessionId, selectedSeats);
+      await sessionApi.bookSeats(sessionId, selectedSeats);
       navigate("/my-tickets");
     } catch (err: any) {
       setError(

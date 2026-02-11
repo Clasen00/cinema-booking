@@ -1,4 +1,4 @@
-import bookingApi from "@/entities/booking/api/bookingsApi";
+import { bookingApi } from "@/entities/booking";
 import { useState, useCallback } from "react";
 
 interface UseBookingPaymentProps {
@@ -22,10 +22,7 @@ export const useBookingPayment = ({
         const errorMessage =
           err.response?.data?.message || "Ошибка при оплате. Попробуйте позже.";
         onError?.(errorMessage);
-        console.error(
-          `Error processing payment for booking ${bookingId}:`,
-          err,
-        );
+        console.error(`Ошибка при обработке бронирования ${bookingId}:`, err);
       } finally {
         setProcessing(null);
       }
@@ -43,7 +40,7 @@ export const useBookingPayment = ({
         const errorMessage =
           err.response?.data?.message || "Ошибка при отмене бронирования.";
         onError?.(errorMessage);
-        console.error(`Error canceling booking ${bookingId}:`, err);
+        console.error(`Ошибка при отмене брованирования ${bookingId}:`, err);
       } finally {
         setProcessing(null);
       }

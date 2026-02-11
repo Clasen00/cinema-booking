@@ -2,8 +2,7 @@ import { useState, useEffect, useCallback, useMemo } from "react";
 import { groupBookingsByStatus } from "../utils/groupBookingsByStatus";
 import { calculateRemainingTime } from "../utils/calculateRemainingTime";
 import { useSettings } from "./useSettings";
-import bookingApi from "@/entities/booking/api/bookingsApi";
-import type { Booking } from "@/entities/booking/model/types";
+import { bookingApi, type Booking } from "@/entities/booking";
 
 export const useUserBookings = () => {
   const [bookings, setBookings] = useState<Booking[]>([]);

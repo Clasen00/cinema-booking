@@ -1,5 +1,5 @@
-import apiClient from "../../../shared/api/apiClient";
-import type { Cinema, MovieSession } from "../../../types";
+import apiClient from "@/shared/api/apiClient";
+import type { Cinema, MovieSession } from "../model/types";
 
 const cinemaApi = {
   /**
@@ -10,7 +10,7 @@ const cinemaApi = {
       const response = await apiClient.get<Cinema[]>("/cinemas");
       return response.data;
     } catch (error) {
-      console.error("Error fetching cinemas:", error);
+      console.error("Ошибка при получении кинотеатров:", error);
       throw error;
     }
   },
@@ -23,7 +23,7 @@ const cinemaApi = {
       const response = await apiClient.get<Cinema>(`/cinemas/${cinemaId}`);
       return response.data;
     } catch (error) {
-      console.error(`Error fetching cinema ${cinemaId}:`, error);
+      console.error(`Ошибка при получении кинотеатра ${cinemaId}:`, error);
       throw error;
     }
   },

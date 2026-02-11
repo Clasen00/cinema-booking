@@ -4,7 +4,6 @@ export { RegisterForm } from "./ui/RegisterForm/RegisterForm";
 export { PasswordStrength } from "./ui/PasswordStrength/PasswordStrength";
 
 // Экспорт хуков
-export { useAuth } from "./lib/hooks/useAuth";
 export { useLoginForm } from "./lib/hooks/useLoginForm";
 export { useRegisterForm } from "./lib/hooks/useRegisterForm";
 

@@ -1,5 +1,4 @@
-import cinemaApi from "@/entities/cinema/api/cinemaApi";
-import type { Cinema } from "@/types";
+import { cinemaApi, type Cinema } from "@/entities/cinema";
 import { useState, useEffect, useCallback } from "react";
 
 export const useCinemas = () => {

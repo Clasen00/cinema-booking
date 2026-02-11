@@ -1,5 +1,5 @@
+import authApi from "@/features/auth/api/authApi";
 import { useState, useEffect, useCallback } from "react";
-import authApi from "../../api/authApi";
 
 interface User {
   id: string;

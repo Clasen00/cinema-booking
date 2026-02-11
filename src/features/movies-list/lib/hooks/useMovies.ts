@@ -1,4 +1,4 @@
-import movieApi from "@/entities/movie/api/movieApi";
+import { movieApi } from "@/entities/movie";
 import type { Movie } from "@/types";
 import { useState, useEffect, useCallback } from "react";
 
@@ -40,14 +40,8 @@ export const useMovies = (options: UseMoviesOptions = {}) => {
         result = result.filter(
           (movie) =>
             movie.title.toLowerCase().includes(query) ||
-            movie.description?.toLowerCase().includes(query) ||
-            movie.genre?.toLowerCase().includes(query),
+            movie.description?.toLowerCase().includes(query),
         );
-      }
-
-      // Фильтрация по жанру
-      if (options.genre) {
-        result = result.filter((movie) => movie.genre === options.genre);
       }
 
       setFilteredMovies(result);

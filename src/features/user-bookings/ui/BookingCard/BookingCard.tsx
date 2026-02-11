@@ -1,4 +1,4 @@
-import type { Booking } from "@/entities/booking/model/types";
+import type { Booking } from "@/entities/booking";
 import { formatSeats } from "../../lib/utils/formatSeats";
 import { Button } from "@/shared/ui";
 import { PaymentTimer } from "../PaymentTimer/PaymentTimer";
@@ -73,11 +73,6 @@ export const BookingCard: React.FC<BookingCardProps> = ({
         <div className={styles.detailRow}>
           <span className={styles.label}>Кинотеатр:</span>
           <span className={styles.value}>{booking.cinema?.name}</span>
-        </div>
-
-        <div className={styles.detailRow}>
-          <span className={styles.label}>Зал:</span>
-          <span className={styles.value}>{booking.movieSession?.hall}</span>
         </div>
 
         <div className={styles.detailRow}>

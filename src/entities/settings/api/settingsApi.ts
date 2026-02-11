@@ -1,5 +1,5 @@
-import apiClient from "../../../shared/api/apiClient";
-import type { Settings } from "../../../types";
+import apiClient from "@/shared/api/apiClient";
+import type { Settings } from "../model/types";
 
 export const settingsApi = {
   /**

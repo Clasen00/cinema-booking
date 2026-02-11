@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import apiClient from "@/shared/api/apiClient";
-import type { Settings } from "@/entities/settings/model/types";
+import type { Settings } from "@/entities/settings";
 
 export const useSettings = () => {
   const [settings, setSettings] = useState<Settings | null>(null);
@@ -15,7 +15,7 @@ export const useSettings = () => {
       setError(null);
     } catch (err) {
       setError("Не удалось загрузить настройки системы.");
-      console.error("Error fetching settings:", err);
+      console.error("Ошибка при загрузке настроек:", err);
     } finally {
       setLoading(false);
     }

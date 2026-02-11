@@ -1,8 +1,8 @@
 import React from "react";
 import { CinemaCard } from "../CinemaCard/CinemaCard";
 import { EmptyState } from "../EmptyState/EmptyState";
+import type { Cinema } from "@/entities/cinema";
 import styles from "./CinemasList.module.scss";
-import type { Cinema } from "@/types";
 
 interface CinemasListProps {
   cinemas: Cinema[];

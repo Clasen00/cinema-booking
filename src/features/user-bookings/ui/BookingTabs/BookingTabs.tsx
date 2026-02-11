@@ -4,7 +4,7 @@ import { useBookingPayment } from "../../lib/hooks/useBookingPayment";
 import { useSettings } from "../../lib/hooks/useSettings";
 import styles from "./BookingTabs.module.scss";
 import { Button } from "@/shared/ui";
-import type { Booking } from "@/entities/booking/model/types";
+import type { Booking } from "@/entities/booking";
 
 interface BookingTabsProps {
   unpaidBookings: Booking[];

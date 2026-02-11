@@ -1,5 +1,5 @@
 export interface Cinema {
-  id: string;
+  id: number;
   name: string;
   address?: string;
   city?: string;
@@ -8,10 +8,8 @@ export interface Cinema {
 }
 
 export interface MovieSession {
-  id: string;
-  movieId: string;
-  cinemaId: string;
+  id: number;
+  movieId: number;
+  cinemaId: number;
   startTime: string;
-  hall: string;
-  price: number;
 }
