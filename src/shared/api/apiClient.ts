@@ -2,8 +2,8 @@ import axios, { AxiosError } from "axios";
 import type { AxiosInstance } from "axios";
 import type { InternalAxiosRequestConfig } from "axios";
 
-const API_BASE_URL =
-  import.meta.env.VITE_API_BASE_URL || "http://localhost:3022/api";
+export const API_BASE_URL =
+  import.meta.env.VITE_API_BASE_URL || "http://localhost:3022";
 
 class ApiClient {
   private client: AxiosInstance;

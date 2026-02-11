@@ -1,0 +1,73 @@
+.movieInfo {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.posterColumn {
+  display: flex;
+  flex-direction: column;
+}
+
+.detailsColumn {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-size: 2.25rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #1f2937;
+}
+
+.genreContainer {
+  margin-bottom: 1rem;
+}
+
+.genre {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background-color: #dbeafe;
+  color: #1e40af;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.details {
+  margin-bottom: 1.5rem;
+  color: #4b5563;
+}
+
+.detail {
+  margin-bottom: 0.5rem;
+}
+
+.descriptionSection {
+  margin-top: auto;
+}
+
+.descriptionTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  color: #1f2937;
+}
+
+.description {
+  color: #4b5563;
+  line-height: 1.75;
+}
+
+@media (max-width: 768px) {
+  .movieInfo {
+    grid-template-columns: 1fr;
+  }
+
+  .posterColumn {
+    max-width: 300px;
+    margin: 0 auto;
+  }
+}

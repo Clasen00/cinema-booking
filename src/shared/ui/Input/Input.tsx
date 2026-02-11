@@ -1,5 +1,6 @@
-import React, { InputHTMLAttributes, forwardRef } from 'react';
-import styles from './Input.module.scss';
+import { forwardRef } from "react";
+import type { InputHTMLAttributes } from "react";
+import styles from "./Input.module.scss";
 
 export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   label?: string;
@@ -8,7 +9,7 @@ export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 }
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ label, error, fullWidth = false, className = '', ...props }, ref) => {
+  ({ label, error, fullWidth = false, className = "", ...props }, ref) => {
     const inputClasses = [
       styles.input,
       error && styles.error,
@@ -16,10 +17,10 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
       className,
     ]
       .filter(Boolean)
-      .join(' ');
+      .join(" ");
 
     return (
-      <div className={`${styles.wrapper} ${fullWidth ? styles.fullWidth : ''}`}>
+      <div className={`${styles.wrapper} ${fullWidth ? styles.fullWidth : ""}`}>
         {label && (
           <label htmlFor={props.id} className={styles.label}>
             {label}
@@ -29,7 +30,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         {error && <span className={styles.errorMessage}>{error}</span>}
       </div>
     );
-  }
+  },
 );
 
-Input.displayName = 'Input';
+Input.displayName = "Input";

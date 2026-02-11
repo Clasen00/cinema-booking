@@ -1,0 +1,135 @@
+.container {
+  display: flex;
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.rowLabels {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 1.75rem;
+}
+
+.rowLabel {
+  width: 2rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  color: #6b7280;
+  font-size: 0.875rem;
+}
+
+.seatGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.row {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.seat {
+  width: 2.5rem;
+  height: 2.5rem;
+  border: none;
+  border-radius: 0.375rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+
+  &:hover:not(:disabled) {
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+}
+
+.seatAvailable {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: white;
+
+  &:hover:not(:disabled) {
+    background: linear-gradient(135deg, #34d399 0%, #10b981 100%);
+  }
+}
+
+.seatSelected {
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  color: white;
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.4);
+
+  &:hover:not(:disabled) {
+    background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+  }
+}
+
+.seatBooked {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  color: white;
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.seatDisabled {
+  background: linear-gradient(135deg, #d1d5db 0%, #9ca3af 100%);
+  color: white;
+  cursor: pointer;
+
+  &:hover {
+    background: linear-gradient(135deg, #9ca3af 0%, #6b7280 100%);
+  }
+}
+
+.seatNumber {
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .rowLabels {
+    flex-direction: row;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+  }
+
+  .rowLabel {
+    width: 2.5rem;
+    height: 2rem;
+  }
+
+  .seat {
+    width: 2.25rem;
+    height: 2.25rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .seat {
+    width: 2rem;
+    height: 2rem;
+    font-size: 0.7rem;
+  }
+
+  .row {
+    gap: 0.375rem;
+  }
+}

@@ -1,5 +1,6 @@
+import type { MovieSession } from "@/entities/session/model/types";
 import apiClient from "../../../shared/api/apiClient";
-import type { Movie, MovieSession } from "../../../types";
+import type { Movie } from "../../../types";
 
 const movieApi = {
   /**
@@ -10,7 +11,7 @@ const movieApi = {
       const response = await apiClient.get<Movie[]>("/movies");
       return response.data;
     } catch (error) {
-      console.error("Error fetching movies:", error);
+      console.error("Ошибка при получении фильмов:", error);
       throw error;
     }
   },
@@ -20,10 +21,15 @@ const movieApi = {
    */
   async getMovieById(movieId: string): Promise<Movie> {
     try {
-      const response = await apiClient.get<Movie>(`/movies/${movieId}`);
-      return response.data;
+      const response = await apiClient.get<Movie[]>("/movies");
+
+      const movie = response.data.find((movie) => movie.id === Number(movieId));
+      if (!movie) {
+        throw new Error(`Фильм с ID ${movieId} не найден`);
+      }
+      return movie;
     } catch (error) {
-      console.error(`Error fetching movie ${movieId}:`, error);
+      console.error(`Ошибка при получении фильма ${movieId}:`, error);
       throw error;
     }
   },
@@ -38,7 +44,10 @@ const movieApi = {
       );
       return response.data;
     } catch (error) {
-      console.error(`Error fetching sessions for movie ${movieId}:`, error);
+      console.error(
+        `Ошибка при получении сеансов для фильма ${movieId}:`,
+        error,
+      );
       throw error;
     }
   },

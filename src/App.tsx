@@ -6,31 +6,27 @@ import {
   Navigate,
 } from "react-router-dom";
 
-import "./App.css";
-import ProtectedRoute from "./components/auth/ProtectedRoute";
-import Header from "./components/layout/Header";
-import type { AuthProvider } from "./contexts/AuthContext";
-import CinemaDetailPage from "./pages/CinemaDetailPage";
-import CinemasPage from "./pages/CinemasPage";
-import LoginPage from "./pages/LoginPage";
-import MovieDetailPage from "./pages/MovieDetailPage";
-import MoviesPage from "./pages/MoviesPage";
-import RegisterPage from "./pages/RegisterPage";
-import SessionBookingPage from "./pages/SessionBookingPage";
+import styles from "./App.module.scss";
+import { AuthProvider } from "./contexts/AuthContext";
+
+import CinemasPage from "./pages/cinemas/ui/CinemasPage";
+import CinemaDetailPage from "./pages/cinema-detail/ui/CinemaDetailPage";
+import { LoginPage } from "./pages/login";
+import MovieDetailPage from "./pages/movie-detail/ui/MovieDetailPage";
+import MoviesPage from "./pages/movies/ui/MoviesPage";
+import RegisterPage from "./pages/register/ui/RegisterPage";
+import SessionBookingPage from "./pages/sessionBooking/ui/SessionBookingPage";
+import MyTicketsPage from "./pages/my-tickets/ui/MyTicketsPage";
+import { ProtectedRoute } from "./shared/ui";
+import { Header } from "./shared/ui/Header/Header";
 
 const App: React.FC = () => {
   return (
     <Router>
       <AuthProvider>
-        <div style={{ minHeight: "100vh", backgroundColor: "#f9fafb" }}>
+        <div className={styles.container}>
           <Header />
-          <main
-            style={{
-              maxWidth: "1400px",
-              margin: "0 auto",
-              padding: "2rem 1rem",
-            }}
-          >
+          <main id={styles.root}>
             <Routes>
               {/* Public routes */}
               <Route path="/" element={<Navigate to="/movies" replace />} />

@@ -1,41 +1,38 @@
-import apiClient from "../../../shared/api/apiClient";
-import type { MovieSession, Booking, SeatSelection } from "../../../types";
+import apiClient from "@/shared/api/apiClient";
+import type { MovieSessionDetails, BookingResponse } from "../model/types";
+import type { Seat } from "@/types";
 
-export interface BookingRequest {
-  seats: SeatSelection[];
-}
-
-const sessionsApi = {
+const sessionApi = {
   /**
    * Получить информацию о сеансе по ID
    */
-  async getSessionById(sessionId: string): Promise<MovieSession> {
+  async getSessionById(id: string): Promise<MovieSessionDetails> {
     try {
-      const response = await apiClient.get<MovieSession>(
-        `/movieSessions/${sessionId}`,
+      const response = await apiClient.get<MovieSessionDetails>(
+        `/movieSessions/${id}`,
       );
       return response.data;
     } catch (error) {
-      console.error(`Error fetching session ${sessionId}:`, error);
+      console.error(`Ошибка получения информации о сеансе ${id}:`, error);
       throw error;
     }
   },
 
   /**
-   * Забронировать места на сеанс
+   * Забронировать места на сеансе
    */
-  async bookSeats(sessionId: string, seats: SeatSelection[]): Promise<Booking> {
+  async bookSeats(sessionId: string, seats: Seat[]): Promise<BookingResponse> {
     try {
-      const response = await apiClient.post<Booking>(
+      const response = await apiClient.post<BookingResponse>(
         `/movieSessions/${sessionId}/bookings`,
         { seats },
       );
       return response.data;
     } catch (error) {
-      console.error(`Error booking seats for session ${sessionId}:`, error);
+      console.error(`Ошибка бронирования мест на сеанс ${sessionId}:`, error);
       throw error;
     }
   },
 };
 
-export default sessionsApi;
+export default sessionApi;

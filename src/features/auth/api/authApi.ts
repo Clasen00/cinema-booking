@@ -1,11 +1,6 @@
+import apiClient from "@/shared/api/apiClient";
+import type { RegisterData, AuthResponse, ApiError, LoginData } from "@/types";
 import axios from "axios";
-import type {
-  RegisterData,
-  AuthResponse,
-  ApiError,
-  LoginData,
-} from "../../../types";
-import apiClient from "../../../shared/api/apiClient";
 
 export const authApi = {
   async register(data: RegisterData): Promise<AuthResponse> {
@@ -22,7 +17,7 @@ export const authApi = {
       if (axios.isAxiosError(error) && error.response) {
         throw error.response.data as ApiError;
       }
-      throw { message: "Network error" } as ApiError;
+      throw { message: "Ошибка регистрации" } as ApiError;
     }
   },
 
@@ -46,7 +41,7 @@ export const authApi = {
         }
         throw error.response.data as ApiError;
       }
-      throw { message: "Network error" } as ApiError;
+      throw { message: "Ошибка авторизации" } as ApiError;
     }
   },
 

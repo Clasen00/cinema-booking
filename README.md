@@ -1,73 +1,223 @@
-# React + TypeScript + Vite
+# 🎬 Cinema Booking
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Веб-приложение для бронирования билетов в кинотеатр. Проект реализован с использованием React, TypeScript и архитектуры Feature-Sliced Design (FSD).
 
-Currently, two official plugins are available:
+## 📋 Содержание
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [Технологии](#технологии)
+- [Архитектура проекта](#архитектура-проекта)
+- [Установка](#установка)
+- [Запуск проекта](#запуск-проекта)
+- [Тестирование](#тестирование)
+- [Структура проекта](#структура-проекта)
+- [Backend API](#backend-api)
 
-## React Compiler
+## 🚀 Технологии
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **React 19.2.4** - библиотека для создания пользовательских интерфейсов
+- **TypeScript 5.9.3** - строго типизированный JavaScript
+- **Vite 7.2.4** - современный сборщик и dev-сервер
+- **React Router 7.13.0** - маршрутизация на стороне клиента
+- **Formik 2.4.9** - управление формами
+- **Yup 1.7.1** - валидация схем
+- **Axios 1.13.4** - HTTP клиент
+- **Sass 1.97.3** - CSS-препроцессор
+- **Jest 30.2.0** - фреймворк для тестирования
+- **Testing Library** - утилиты для тестирования React компонентов
+- **MSW 2.12.10** - мокирование API запросов
 
-## Expanding the ESLint configuration
+## 🏗️ Архитектура проекта
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Проект следует архитектуре **Feature-Sliced Design (FSD)** - методологии организации кода в frontend приложениях.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Слои FSD
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```
+src/
+├── app/          # Инициализация приложения, глобальные стили, провайдеры
+├── pages/        # Страницы приложения (компоненты роутинга)
+├── features/     # Функциональные блоки (бизнес-логика)
+├── entities/     # Бизнес-сущности (фильмы, билеты, сеансы)
+├── shared/       # Переиспользуемый код (UI-kit, утилиты, API)
+├── contexts/     # React контексты
+├── types/        # Глобальные типы TypeScript
+├── mocks/        # Моки для тестирования
+└── assets/       # Статические ресурсы (изображения, шрифты)
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Принципы FSD
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+1. **Слои** - код организован по уровням абстракции (от общего к частному)
+2. **Слайсы** - группировка кода по бизнес-доменам
+3. **Сегменты** - разделение по техническому назначению (ui, model, api, lib)
+4. **Изоляция** - строгие правила импортов между слоями
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Алиасы импортов
+
+Проект использует следующие алиасы для удобства импортов:
+
+```typescript
+@/         - корень src/
+@app/      - src/app/
+@pages/    - src/pages/
+@features/ - src/features/
+@entities/ - src/entities/
+@shared/   - src/shared/
 ```
+
+## 📦 Установка
+
+### Требования
+
+- Node.js >= 18.0.0
+- npm >= 9.0.0
+
+### Установка зависимостей
+
+```bash
+# Клонируйте репозиторий
+git clone <repository-url>
+
+# Перейдите в директорию проекта
+cd cinema-booking
+
+# Установите зависимости
+npm install
+```
+
+## 🎯 Запуск проекта
+
+### Режим разработки
+
+```bash
+npm run dev
+```
+
+Приложение будет доступно по адресу: `http://localhost:5173`
+
+### Сборка для продакшена
+
+```bash
+npm run build
+```
+
+Собранные файлы будут находиться в директории `dist/`
+
+### Предпросмотр production-сборки
+
+```bash
+npm run preview
+```
+
+### Линтинг
+
+```bash
+npm run lint
+```
+
+## 🧪 Тестирование
+
+Проект использует **Jest** и **Testing Library** для тестирования.
+
+### Запуск всех тестов
+
+```bash
+npm test
+```
+
+### Запуск тестов в watch-режиме
+
+```bash
+npm run test:watch
+```
+
+### Генерация отчета о покрытии кода
+
+```bash
+npm run test:coverage
+```
+
+Отчет о покрытии будет создан в директории `coverage/`
+
+### Конфигурация тестов
+
+- **jest.config.js** - основная конфигурация Jest
+- **jest.setup.js** - настройка полифиллов для Node.js
+- **src/setupTests.ts** - настройка Testing Library
+- **tsconfig.jest.json** - TypeScript конфигурация для тестов
+- **__mocks__/** - моки для статических файлов
+- **src/mocks/** - моки для API (MSW)
+
+## 📁 Структура проекта
+
+```
+cinema-booking/
+├── public/                 # Публичные статические файлы
+├── src/
+│   ├── app/               # Слой приложения
+│   ├── pages/             # Страницы
+│   ├── features/          # Фичи (функциональные блоки)
+│   ├── entities/          # Бизнес-сущности
+│   ├── shared/            # Общий код
+│   │   ├── ui/           # UI компоненты
+│   │   ├── lib/          # Утилиты и хелперы
+│   │   └── api/          # API клиент
+│   ├── contexts/          # React контексты
+│   ├── types/             # TypeScript типы
+│   ├── mocks/             # Моки для тестов
+│   ├── assets/            # Статические ресурсы
+│   ├── App.tsx            # Корневой компонент
+│   └── main.tsx           # Точка входа
+├── __mocks__/             # Моки для Jest
+├── coverage/              # Отчеты о покрытии кода
+├── dist/                  # Production-сборка
+├── .gitignore
+├── .rules                 # Правила проекта
+├── eslint.config.js       # ESLint конфигурация
+├── jest.config.js         # Jest конфигурация
+├── jest.setup.js          # Jest setup
+├── package.json
+├── tsconfig.json          # TypeScript конфигурация
+├── tsconfig.app.json      # TypeScript для приложения
+├── tsconfig.jest.json     # TypeScript для тестов
+├── tsconfig.node.json     # TypeScript для Node.js скриптов
+├── vite.config.ts         # Vite конфигурация
+└── README.md
+```
+
+## 🔗 Backend API
+
+Backend для данного проекта доступен по адресу:
+
+**Repository:** [https://github.com/Clasen00/frontend_technical_task](https://github.com/Clasen00/frontend_technical_task)
+
+### Основные эндпоинты
+
+Информация об API эндпоинтах доступна в репозитории бэкенда.
+
+## 📝 Правила разработки
+
+Проект следует следующим принципам:
+
+- ✅ **SOLID** - принципы объектно-ориентированного проектирования
+- ✅ **DRY** - не повторяйся (Don't Repeat Yourself)
+- ✅ **Feature-Sliced Design** - архитектурная методология
+- ✅ **TypeScript** - строгая типизация
+- ✅ **Модульность** - изолированные и переиспользуемые модули
+- ✅ **Производительность** - баланс между читаемостью и эффективностью
+
+## 🤝 Участие в разработке
+
+1. Создайте ветку от `main`
+2. Внесите изменения
+3. Убедитесь, что все тесты проходят: `npm test`
+4. Проверьте код линтером: `npm run lint`
+5. Создайте Pull Request
+
+## 📄 Лицензия
+
+Проект создан в образовательных целях.
+
+---
+
+**Версия:** 0.0.0

@@ -10,7 +10,7 @@ export const settingsApi = {
       const response = await apiClient.get<Settings>("/settings");
       return response.data;
     } catch (error) {
-      console.error("Error fetching settings:", error);
+      console.error("Ошибка при получении настроек:", error);
       throw error;
     }
   },

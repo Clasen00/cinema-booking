@@ -1,0 +1,94 @@
+.sessionsSection {
+  border-top: 1px solid #e5e7eb;
+  padding-top: 2rem;
+}
+
+.sectionTitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: #1f2937;
+}
+
+.noSessions {
+  color: #6b7280;
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.sessionsList {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.cinemaGroup {
+  padding: 1.5rem;
+  background-color: #f9fafb;
+  border-radius: 0.5rem;
+}
+
+.cinemaTitle {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #1f2937;
+}
+
+.tableContainer {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table thead {
+  background-color: #e5e7eb;
+}
+
+.table th {
+  padding: 0.75rem;
+  text-align: left;
+  font-weight: 600;
+  color: #374151;
+}
+
+.table tbody tr {
+  border-bottom: 1px solid #e5e7eb;
+  background-color: white;
+}
+
+.table td {
+  padding: 0.75rem;
+  color: #4b5563;
+}
+
+.bookButton {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background-color: #2563eb;
+  color: white;
+  text-decoration: none;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.bookButton:hover {
+  background-color: #1d4ed8;
+}
+
+@media (max-width: 640px) {
+  .cinemaGroup {
+    padding: 1rem;
+  }
+
+  .table th,
+  .table td {
+    padding: 0.5rem;
+    font-size: 0.875rem;
+  }
+}
