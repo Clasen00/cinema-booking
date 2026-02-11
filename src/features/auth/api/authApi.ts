@@ -7,16 +7,27 @@ export const authApi = {
     try {
       const response = await apiClient.post<AuthResponse>("/register", data);
 
-      if (response.data.token) {
-        localStorage.setItem("authToken", response.data.token);
-        localStorage.setItem("user", JSON.stringify(response.data.user));
+      // Проверяем корректность ответа сервера
+      if (!response.data) {
+        console.error("Register API: ответ сервера пуст");
+        throw { message: "Сервер вернул пустой ответ" } as ApiError;
       }
 
       return response.data;
     } catch (error: any) {
+      console.error("Register API error:", error);
+
       if (axios.isAxiosError(error) && error.response) {
+        // Логируем детали ошибки от сервера
+        console.error("Server response:", error.response.data);
         throw error.response.data as ApiError;
       }
+
+      // Если это наша кастомная ошибка, пробрасываем её
+      if (error.message) {
+        throw error;
+      }
+
       throw { message: "Ошибка регистрации" } as ApiError;
     }
   },
@@ -25,14 +36,18 @@ export const authApi = {
     try {
       const response = await apiClient.post<AuthResponse>("/login", data);
 
-      if (response.data.token) {
-        localStorage.setItem("authToken", response.data.token);
-        localStorage.setItem("user", JSON.stringify(response.data.user));
+      // Проверяем корректность ответа сервера
+      if (!response.data) {
+        console.error("Login API: ответ сервера пуст");
+        throw { message: "Сервер вернул пустой ответ" } as ApiError;
       }
 
       return response.data;
     } catch (error: any) {
+      console.error("Login API error:", error);
+
       if (axios.isAxiosError(error) && error.response) {
+        console.error("Server response:", error.response.data);
         if (error.response.status === 401) {
           throw {
             message:
@@ -41,19 +56,25 @@ export const authApi = {
         }
         throw error.response.data as ApiError;
       }
+
+      // Если это наша кастомная ошибка, пробрасываем её
+      if (error.message) {
+        throw error;
+      }
+
       throw { message: "Ошибка авторизации" } as ApiError;
     }
   },
 
   logout(): void {
     localStorage.removeItem("authToken");
-    localStorage.removeItem("user");
+    localStorage.removeItem("authUser");
     // Удаляем заголовок авторизации из axios
     delete apiClient.defaults.headers.common["Authorization"];
   },
 
   getCurrentUser(): { id: string; username: string } | null {
-    const userStr = localStorage.getItem("user");
+    const userStr = localStorage.getItem("authUser");
     if (userStr) {
       try {
         return JSON.parse(userStr);

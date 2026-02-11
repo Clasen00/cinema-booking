@@ -30,6 +30,8 @@ export const useAuth = (): AuthContextType => {
     const storedToken = localStorage.getItem("authToken");
     const storedUser = localStorage.getItem("authUser");
 
+    console.log(storedToken, storedUser);
+
     if (storedToken && storedUser) {
       setToken(storedToken);
       setUser(JSON.parse(storedUser));
@@ -51,7 +53,7 @@ export const useAuth = (): AuthContextType => {
       setUser(data.user);
 
       localStorage.setItem("authToken", data.token);
-      localStorage.setItem("authUser", JSON.stringify(data.user));
+      localStorage.setItem("authUser", JSON.stringify(username));
     } finally {
       setIsLoading(false);
     }
@@ -80,7 +82,7 @@ export const useAuth = (): AuthContextType => {
         setUser(data.user);
 
         localStorage.setItem("authToken", data.token);
-        localStorage.setItem("authUser", JSON.stringify(data.user));
+        localStorage.setItem("authUser", JSON.stringify(username));
       } finally {
         setIsLoading(false);
       }

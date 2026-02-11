@@ -51,7 +51,7 @@ class ApiClient {
   private handleResponseError = (error: AxiosError): Promise<AxiosError> => {
     if (error.response?.status === 401) {
       localStorage.removeItem("authToken");
-      localStorage.removeItem("user");
+      localStorage.removeItem("authUser");
 
       const currentPath = window.location.pathname;
       const publicPaths = ["/login", "/register", "/movies", "/cinemas"];
