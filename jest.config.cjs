@@ -11,6 +11,8 @@ module.exports = {
   setupFiles: ["<rootDir>/jest.setup.cjs"],
 
   moduleNameMapper: {
+    // apiClient мок (должен быть перед общими алиасами FSD)
+    "^@/shared/api/apiClient$": "<rootDir>/__mocks__/@/shared/api/apiClient.ts",
     // Алиасы FSD
     "^@/(.*)$": "<rootDir>/src/$1",
     "^@app/(.*)$": "<rootDir>/src/app/$1",

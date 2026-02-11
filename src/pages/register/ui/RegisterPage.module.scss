@@ -9,18 +9,6 @@
   overflow: hidden;
 }
 
-.container::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><polygon fill="rgba(255,255,255,0.05)" points="0,100 100,0 100,100"/></svg>');
-  background-size: 50px 50px;
-  opacity: 0.3;
-}
-
 .title {
   font-size: 2.5rem;
   font-weight: 800;
@@ -35,7 +23,7 @@
 }
 
 .title::after {
-  content: '';
+  content: "";
   display: block;
   width: 60px;
   height: 4px;

@@ -33,11 +33,11 @@ export const RegisterForm: React.FC = () => {
           onChange={handleChange}
           onBlur={handleBlur}
           disabled={loading}
-          className={`${styles.input} ${getFieldProps("username").error ? styles.inputError : ""}`}
+          className={`${styles.input} ${getFieldProps("username")?.error ? styles.inputError : ""}`}
           placeholder="Придумайте имя пользователя (минимум 8 символов)"
         />
-        {getFieldProps("username").error && (
-          <div className={styles.error}>{getFieldProps("username").error}</div>
+        {getFieldProps("username")?.error && (
+          <div className={styles.error}>{getFieldProps("username")?.error}</div>
         )}
       </div>
 
@@ -57,15 +57,15 @@ export const RegisterForm: React.FC = () => {
           onChange={handleChange}
           onBlur={handleBlur}
           disabled={loading}
-          className={`${styles.input} ${getFieldProps("password").error ? styles.inputError : ""}`}
+          className={`${styles.input} ${getFieldProps("password")?.error ? styles.inputError : ""}`}
           placeholder="Придумайте пароль (минимум 8 символов, заглавная буква, цифра)"
         />
 
         {/* Добавляем индикатор сложности пароля */}
         {values.password && <PasswordStrength password={values.password} />}
 
-        {getFieldProps("password").error && (
-          <div className={styles.error}>{getFieldProps("password").error}</div>
+        {getFieldProps("password")?.error && (
+          <div className={styles.error}>{getFieldProps("password")?.error}</div>
         )}
       </div>
 
@@ -82,13 +82,13 @@ export const RegisterForm: React.FC = () => {
           onChange={handleChange}
           onBlur={handleBlur}
           disabled={loading}
-          className={`${styles.input} ${getFieldProps("passwordConfirmation").error ? styles.inputError : ""}`}
+          className={`${styles.input} ${getFieldProps("passwordConfirmation")?.error ? styles.inputError : ""}`}
           placeholder="Повторите пароль"
         />
 
-        {getFieldProps("passwordConfirmation").error && (
+        {getFieldProps("passwordConfirmation")?.error && (
           <div className={styles.error}>
-            {getFieldProps("passwordConfirmation").error}
+            {getFieldProps("passwordConfirmation")?.error}
           </div>
         )}
       </div>
