@@ -2,6 +2,7 @@
   display: flex;
   gap: 1rem;
   margin: 2rem 0;
+  justify-self: center;
 }
 
 .rowLabels {
@@ -31,7 +32,6 @@
 .row {
   display: flex;
   gap: 0.5rem;
-  justify-content: center;
 }
 
 .seat {

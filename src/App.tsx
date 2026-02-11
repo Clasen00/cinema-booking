@@ -9,16 +9,16 @@ import {
 import styles from "./App.module.scss";
 import { AuthProvider } from "./contexts/AuthContext";
 
-import CinemasPage from "./pages/cinemas/ui/CinemasPage";
-import CinemaDetailPage from "./pages/cinema-detail/ui/CinemaDetailPage";
-import { LoginPage } from "./pages/login";
-import MovieDetailPage from "./pages/movie-detail/ui/MovieDetailPage";
-import MoviesPage from "./pages/movies/ui/MoviesPage";
-import RegisterPage from "./pages/register/ui/RegisterPage";
-import SessionBookingPage from "./pages/sessionBooking/ui/SessionBookingPage";
-import MyTicketsPage from "./pages/my-tickets/ui/MyTicketsPage";
 import { ProtectedRoute } from "./shared/ui";
 import { Header } from "./shared/ui/Header/Header";
+import { CinemaDetailPage } from "@pages/cinema-detail";
+import { CinemasPage } from "@pages/cinemas";
+import { LoginPage } from "@pages/login";
+import { MovieDetailPage } from "@pages/movie-detail";
+import { MoviesPage } from "@pages/movies";
+import { MyTicketsPage } from "@pages/my-tickets";
+import { RegisterPage } from "@pages/register";
+import { SessionBookingPage } from "@pages/sessionBooking/";
 
 const App: React.FC = () => {
   return (
